@@ -10,10 +10,52 @@
 <project name="LytraxAFM" default="default" basedir=".">
     <description>Builds, tests, and runs the project LytraxAFM.</description>
     <import file="nbproject/build-impl.xml"/>
-    <target name="-post-jar" description="bundle sources and javadoc in a jar" depends="javadoc">
-        <jar compress="${jar.compress}" basedir="${src.dir}" jarfile="${dist.dir}/${application.title}-sources.jar"/>
-        <jar compress="${jar.compress}" basedir="${dist.javadoc.dir}" jarfile="${dist.dir}/${application.title}-javadoc.jar"/>
+    <property name="jarname" value="lytrax-afm"/>
+    <property name="version.num" value="1.0.0"/>
+    <target name="-pre-init">
+        <property name="project.name" value="Lytrax AFM" />
+        <tstamp>
+            <format property="NOW" pattern="yyyy-MM-dd HH:mm:ss z" />
+        </tstamp>
+        
+        <!--
+        <exec outputproperty="svna.version" executable="svnversion">
+            <arg value="-c" />
+            <redirector>
+                <outputfilterchain>
+                    <tokenfilter>
+                        <replaceregex pattern="^[0-9]*:?" replace="" flags="g"/>
+                        <replaceregex pattern="M" replace="" flags="g"/>
+                    </tokenfilter>
+                </outputfilterchain>
+            </redirector>
+        </exec>
+        -->
+        
+        <manifest file="MANIFEST.MF">
+            <attribute name="Bundle-Name" value="${project.name}" />           
+            <attribute name="Bundle-Version" value="${version.num}" />
+            <attribute name="Bundle-Date" value="${NOW}" />
+            <!--<attribute name="Bundle-Revision" value="${svna.version}" />-->
+            <attribute name="Implementation-Title" value="${project.name}" />
+            <attribute name="Implementation-Version" value="${version.num}" />
+            <attribute name="Implementation-URL" value="https://github.com/clytras/afm-java" />
+        </manifest>
+        
     </target>
+
+    <target name="-post-jar" description="bundle sources and javadoc in a jar" depends="javadoc">
+        <copy file="${dist.jar}" tofile="${dist.dir}/${jarname}-${version.num}.jar" />
+        <jar compress="${jar.compress}" basedir="${src.dir}" jarfile="${dist.dir}/${jarname}-${version.num}-sources.jar"/>
+        <jar compress="${jar.compress}" basedir="${dist.javadoc.dir}" jarfile="${dist.dir}/${jarname}-${version.num}-javadoc.jar"/>
+        <delete file="MANIFEST.MF"/>
+        <delete file="${dist.jar}"/>
+        <sync todir="../../docs">
+            <fileset dir="${dist.javadoc.dir}"/>
+        </sync>
+    </target>
+
+
     <!--
 
     There exist several targets which are by default empty and which can be 
