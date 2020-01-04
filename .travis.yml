@@ -1,4 +1,6 @@
 language: java
+before_install:
+   - sudo apt-get install ant-optional
 # command to run tests
 script:
   - ant -f Src/LytraxAFM test
