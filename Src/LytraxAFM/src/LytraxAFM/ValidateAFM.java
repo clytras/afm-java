@@ -23,11 +23,9 @@
  */
 package LytraxAFM;
 
-//import java.util.regex.Pattern;
-
 /**
  * Class with static and instance methods to validate AFM numbers
- * @author Christos Lytras <christos.lytras@gmail.com>
+ * @author Christos Lytras {@literal <christos.lytras@gmail.com>}
  */
 public class ValidateAFM {
     private String number;
@@ -39,7 +37,11 @@ public class ValidateAFM {
      * @param afm A string to be check if it's a valid AFM
      */
     public ValidateAFM(String afm) {
+        ValidateAFMExtendedResult result = ValidateExtended(afm);
+        
         this.number = afm;
+        this.valid = result.Valid();
+        this.error = result.Error();
     }
     
     /**
@@ -65,10 +67,6 @@ public class ValidateAFM {
         if(afm.length() != 9) {
             return new ValidateAFMExtendedResult(false, "length");
         }
-        
-//        if(!Pattern.compile("^\\d+$").matcher(afm).find()) {
-//            return new ValidateAFMExtendedResult(false, "nan");
-//        }
 
         if(!afm.matches("^\\d+$")) {
             return new ValidateAFMExtendedResult(false, "nan");
@@ -97,20 +95,20 @@ public class ValidateAFM {
      * The current AFM number the class object contains
      * @return String
      */
-    public String getNumber() { return this.number; }
+    public String Number() { return this.number; }
     
     /**
      * A boolean result indicating the validation of the current number the class object contains
      * @return boolean
      */
-    public boolean isValid() { return this.valid; }
+    public boolean Valid() { return this.valid; }
     
     /**
      * A string result indicating the error if the current number the class object is invalid.
      * It can be empty or "length" or "nan" or "zero" or "invalid"
      * @return String
      */
-    public String getError() { return this.error; }
+    public String Error() { return this.error; }
     
     /**
      * Class for returning an extended validation result

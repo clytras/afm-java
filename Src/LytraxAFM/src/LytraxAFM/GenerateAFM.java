@@ -25,7 +25,7 @@ package LytraxAFM;
 
 /**
  * Class with static methods to generate valid or invalid AFM numbers
- * @author Christos Lytras <christos.lytras@gmail.com>
+ * @author Christos Lytras {@literal <christos.lytras@gmail.com>}
  */
 public class GenerateAFM {
     private Integer _forceFirstDigit = null;
@@ -35,7 +35,23 @@ public class GenerateAFM {
     private Integer _repeatTolerance = null;
     private boolean _valid = true;
     
+    
     public GenerateAFM() {}
+    
+    /**
+     * Resets the current class instance to its default state,
+     * usefull fore resetting to default before variant calls
+     * @return GenerateAFM
+     */
+    public GenerateAFM reset() {
+        _forceFirstDigit = null;
+        _pre99 = false;
+        _individual = false;
+        _legalEntity = false;
+        _repeatTolerance = null;
+        _valid = true;
+        return this;
+    }
     
     /**
      * Generates an AFM number based on class object properties
@@ -62,6 +78,7 @@ public class GenerateAFM {
                     lastGenDigit :
                     null
             );
+
             body += String.valueOf(digit);
             sum += digit << i;
             if(digit == lastGenDigit)
@@ -74,7 +91,7 @@ public class GenerateAFM {
         int validator = sum % 11;
         int d9Valid = validator >= 10 ? 0 : validator;
         int d9 = _valid ? d9Valid : random.next(0, 9, d9Valid);
-        
+   
         return body + String.valueOf(d9);
     }
     
@@ -105,7 +122,7 @@ public class GenerateAFM {
     /**
      * The first digit of the generated number
      * If not null, overrides all pre99, legalEntity and individual
-     * @param value
+     * @param value The forceFirstDigit value to set
      * @return GenerateAFM
      */
     public GenerateAFM forceFirstDigit(Integer value) {
@@ -122,7 +139,7 @@ public class GenerateAFM {
     /**
      * Για ΑΦΜ πριν από 1/1/1999 (ξεκινάει με 0)
      * If true, overrides both legalEntity and individual
-     * @param value
+     * @param value The pre99 value to set
      * @return GenerateAFM
      */
     public GenerateAFM pre99(boolean value) {
@@ -138,7 +155,7 @@ public class GenerateAFM {
     
     /**
      * Φυσικά πρόσωπα, (ξεκινάει με 1-4)
-     * @param value
+     * @param value The individual value to set
      * @return GenerateAFM
      */
     public GenerateAFM individual(boolean value) {
@@ -154,7 +171,7 @@ public class GenerateAFM {
     
     /**
      * Νομικές οντότητες (ξεκινάει με 7-9)
-     * @param value
+     * @param value The legalEntity value to set
      * @return GenerateAFM
      */
     public GenerateAFM legalEntity(boolean value) {
@@ -170,7 +187,7 @@ public class GenerateAFM {
     
     /**
      * Number for max repeat tolerance (0 for no repeats, null for no check)
-     * @param value
+     * @param value The repeatTolerance value to set
      * @return GenerateAFM
      */
     public GenerateAFM repeatTolerance(Integer value) {
@@ -186,7 +203,7 @@ public class GenerateAFM {
     
     /**
      * Generate valid or invalid AFM
-     * @param value
+     * @param value The valid value to set
      * @return GenerateAFM
      */
     public GenerateAFM valid(boolean value) {

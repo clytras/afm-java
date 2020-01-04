@@ -23,45 +23,32 @@
  */
 package LytraxAFM;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import java.util.Map;
+import java.util.HashMap;
 
 /**
  *
  * @author Christos Lytras <christos.lytras@gmail.com>
  */
-public class NewEmptyJUnitTest {
+public class Helpers {
+    public static int Iterations = 100;
     
-    public NewEmptyJUnitTest() {
-    }
+    public static String[] StaticValidNumbers = {
+        "090000045", // DEI
+        "094019245", // OTE
+        "094079101", // EYDAP
+    };
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
+    public static String[] StaticInvalidNumbers = {
+        "123456789",
+        "097364585",
+        "150663780",
+    };
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-     @Test
-     public void hello() {
-         int result = ValidateAFM.addAB(10, 20);
-         assertEquals("Not valid add result", 30, result);
-     }
+    public static Map<String, String> InvalidErrors = new HashMap<String, String>() {{
+        put("length", "09000004");
+        put("nan", "09000004A");
+        put("zero", "000000000");
+        put("invalid", "123456789");
+    }};
 }

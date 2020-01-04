@@ -21,29 +21,40 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package LytraxAFMDemo;
+package LytraxAFM;
 
-import LytraxAFM.ValidateAFM;
-import LytraxAFM.GenerateAFM;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author Christos Lytras <christos.lytras@gmail.com>
  */
-public class Demo {
+public class RandomIntegerTest {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-//        boolean valid = ValidateAFM.Validate("134558791");
-//        System.out.println(valid ? "valid" : "invalid");
+    @Test
+    public void GenerateIntegersWithRange() {
+        Utils.GetRandomInt random = new Utils.GetRandomInt();
 
-        GenerateAFM generator = new GenerateAFM();
-        String number = generator.generate();
-        System.out.println(number);
+        for(int i = 0; i < Helpers.Iterations; i++) {
+            int value = random.next(0, 9);
+            assertTrue(String.format(Messages.MessageNotBetween, value),
+               value >= 0 && value <= 9);
+        }
     }
     
+    @Test
+    public void GenerateIntegersWithRangeExcludingSpecificDigits() {
+        Utils.GetRandomInt random = new Utils.GetRandomInt();
+        
+        for(int i = 0; i < Helpers.Iterations; i++) {
+            for(int notEqual = 0; notEqual <= 9; notEqual++) {
+                int value = random.next(0, 9, notEqual);
+                assertTrue(String.format(Messages.MessageNotBetween, value),
+                   value >= 0 && value <= 9);
+                assertNotEquals(Messages.MessageFailNotEqual, value, notEqual);
+            }
+        }
+    }
 }
+

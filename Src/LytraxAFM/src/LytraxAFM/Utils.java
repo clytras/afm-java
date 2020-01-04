@@ -28,7 +28,7 @@ import java.util.UUID;
 
 /**
  *
- * @author Christos Lytras <christos.lytras@gmail.com>
+ * @author Christos Lytras {@literal <christos.lytras@gmail.com>}
  */
 final class Utils {
     public static class GetRandomInt {
@@ -43,8 +43,9 @@ final class Utils {
         }
         
         public int next(int min, int max, Integer notEqual) {
+            random.setSeed(UUID.randomUUID().getMostSignificantBits());
             int result;
-
+            
             do {
                 result = random.nextInt((max - min) + 1) + min;
             } while(notEqual != null && result == notEqual);
