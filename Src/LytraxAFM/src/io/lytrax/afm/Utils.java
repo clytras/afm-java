@@ -21,34 +21,36 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package LytraxAFM;
+package io.lytrax.afm;
 
-import java.util.Map;
-import java.util.HashMap;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  *
- * @author Christos Lytras <christos.lytras@gmail.com>
+ * @author Christos Lytras {@literal <christos.lytras@gmail.com>}
  */
-public class Helpers {
-    public static int Iterations = 100;
-    
-    public static String[] StaticValidNumbers = {
-        "090000045", // DEI
-        "094019245", // OTE
-        "094079101", // EYDAP
-    };
-    
-    public static String[] StaticInvalidNumbers = {
-        "123456789",
-        "097364585",
-        "150663780",
-    };
-    
-    public static Map<String, String> InvalidErrors = new HashMap<String, String>() {{
-        put("length", "09000004");
-        put("nan", "09000004A");
-        put("zero", "000000000");
-        put("invalid", "123456789");
-    }};
+final class Utils {
+    public static class GetRandomInt {
+        private final Random random;
+        
+        public GetRandomInt() {
+            random = new Random(UUID.randomUUID().getMostSignificantBits());
+        }
+        
+        public int next(int min, int max) {
+            return next(min, max, null);
+        }
+        
+        public int next(int min, int max, Integer notEqual) {
+            random.setSeed(UUID.randomUUID().getMostSignificantBits());
+            int result;
+            
+            do {
+                result = random.nextInt((max - min) + 1) + min;
+            } while(notEqual != null && result == notEqual);
+
+            return result;
+        }
+    }
 }

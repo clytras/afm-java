@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package LytraxAFM;
+package io.lytrax.afm;
 
 /**
  * Class with static methods to generate valid or invalid AFM numbers

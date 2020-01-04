@@ -21,8 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package LytraxAFM;
+package io.lytrax.afm;
 
+import io.lytrax.afm.ValidateAFM;
+import io.lytrax.afm.GenerateAFM;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;

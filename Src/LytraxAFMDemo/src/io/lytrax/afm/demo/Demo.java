@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package LytraxAFMDemo;
+package io.lytrax.afm.demo;
 
-import LytraxAFM.ValidateAFM;
-import LytraxAFM.GenerateAFM;
+import io.lytrax.afm.ValidateAFM;
+import io.lytrax.afm.GenerateAFM;
 
 /**
  *

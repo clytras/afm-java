@@ -21,8 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package LytraxAFM;
+package io.lytrax.afm;
 
+import io.lytrax.afm.ValidateAFM;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

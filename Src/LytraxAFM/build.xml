@@ -45,11 +45,9 @@
     </target>
 
     <target name="-post-jar" description="bundle sources and javadoc in a jar" depends="javadoc">
-        <copy file="${dist.jar}" tofile="${dist.dir}/${jarname}-${version.num}.jar" />
-        <jar compress="${jar.compress}" basedir="${src.dir}" jarfile="${dist.dir}/${jarname}-${version.num}-sources.jar"/>
-        <jar compress="${jar.compress}" basedir="${dist.javadoc.dir}" jarfile="${dist.dir}/${jarname}-${version.num}-javadoc.jar"/>
+        <jar compress="${jar.compress}" basedir="${src.dir}" jarfile="${dist.dir}/${dist.jarname}-${dist.version.num}-sources.jar"/>
+        <jar compress="${jar.compress}" basedir="${dist.javadoc.dir}" jarfile="${dist.dir}/${dist.jarname}-${dist.version.num}-javadoc.jar"/>
         <delete file="MANIFEST.MF"/>
-        <delete file="${dist.jar}"/>
         <sync todir="../../docs">
             <fileset dir="${dist.javadoc.dir}"/>
         </sync>
