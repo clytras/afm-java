@@ -1,6 +1,7 @@
 # Greek TIN/AFM Validator and Generator
 
 [![Linux Build Status](https://img.shields.io/travis/clytras/afm-java.svg?style=flat)](https://travis-ci.org/clytras/afm-java.svg?branch=master)
+
 ![Logo](https://github.com/clytras/afm-java/raw/master/resources/LytraxAFM_logo.png)
 
 Validate and generate Greek TIN (*Tax Identification Number*) / AFM (*Αριθμός Φορολογικού Μητρώου*). Generation function can create valid or invalid numbers including parameters for old format, individuals, legal entities and repet tolerance digits control.
