@@ -1,0 +1,4 @@
+language: java
+# command to run tests
+script:
+  - ant -f Src/LytraxAFM test
