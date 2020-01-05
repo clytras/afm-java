@@ -11,7 +11,7 @@
     <description>Builds, tests, and runs the project LytraxAFM.</description>
     <import file="nbproject/build-impl.xml"/>
     <property name="jarname" value="lytrax-afm"/>
-    <property name="version.num" value="1.0.0"/>
+    <property name="version.num" value="1.0.1"/>
     <target name="-pre-init">
         <property name="project.name" value="Lytrax AFM" />
         <tstamp>

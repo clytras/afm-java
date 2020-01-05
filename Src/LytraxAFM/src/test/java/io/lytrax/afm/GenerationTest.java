@@ -23,8 +23,6 @@
  */
 package io.lytrax.afm;
 
-import io.lytrax.afm.ValidateAFM;
-import io.lytrax.afm.GenerateAFM;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;

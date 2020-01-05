@@ -144,6 +144,15 @@ public class ValidateAFM {
          * @return String
          */
         public String Error() { return this.error; }
+        
+        /**
+         * Converts ValidateAFMExtendedResult to a friendly string result
+         * @return String
+         */
+        @Override
+        public String toString() {
+            return String.format("ValidateAFMExtendedResult { Error()=\"%s\", Valid()=%b }", error, valid);
+        }
     }
 }
 

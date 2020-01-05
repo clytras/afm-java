@@ -23,7 +23,6 @@
  */
 package io.lytrax.afm;
 
-import io.lytrax.afm.ValidateAFM;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

@@ -1,6 +1,8 @@
 # Greek TIN/AFM Validator and Generator
 
-[![Linux Build Status](https://img.shields.io/travis/clytras/afm-java.svg?style=flat)](https://travis-ci.org/clytras/afm-java.svg?branch=master)
+[![Linux Build Status](https://img.shields.io/travis/clytras/afm-java.svg?style=flat)](https://travis-ci.org/clytras/afm-java.svg?branch=master) [![Maven Central](https://img.shields.io/maven-central/v/io.lytrax/lytrax-afm)](https://search.maven.org/artifact/io.lytrax/lytrax-afm)
+
+
 
 ![Logo](https://github.com/clytras/afm-java/raw/master/resources/LytraxAFM_logo.png)
 
@@ -12,6 +14,19 @@ https://lytrax.io/blog/projects/greek-tin-validator-generator
 
 ## Installation
 
+Using Gradle (`build.gradle`):
+
+```gradle
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.lytrax:lytrax-afm:1.0.1'
+}
+```
+
+Or go to [project releases](https://github.com/clytras/afm-java/releases), download and use the latest jar package.
 
 ## Usage
 
@@ -25,17 +40,70 @@ import io.lytrax.afm.GenerateAFM;
 Validate a number:
 
 ```java
+ValidateAFM.Validate("090000045");
+< true
+
+ValidateAFM.Validate("123456789");
+< false
 ```
 
 Generate a valid number:
 
 ```java
+GenerateAFM generator = new GenerateAFM();
+
+generator.reset().generateValid();
+< "731385437"
+```
+
+Validate using `ValidateAFMExtendedResult`:
+
+```java
+import io.lytrax.afm.ValidateAFM.ValidateAFMExtendedResult;
+
+ValidateAFMExtendedResult result = ValidateAFM.ValidateExtended("ab1234");
+
+result.toString();
+< "ValidateAFMExtendedResult { Error()=\"length\", Valid()=false }"
 ```
 
 Generate an invalid number:
 
 ```java
+GenerateAFM generator = new GenerateAFM();
+
+generator.reset().generateValid();
+< "853003357"
 ```
+
+Generate a valid number using function parameters:
+
+```java
+GenerateAFM generator = new GenerateAFM();
+
+generator
+    .reset()
+    .forceFirstDigit(3)
+    .repeatTolerance(1)
+    .valid(true)
+    .generate();
+< "335151580"
+
+generator
+    .reset()
+    .pre99(true)
+    .generateValid();
+< "070825250"
+
+generator
+    .reset()
+    .legalEntity(true)
+    .generateInvalid();
+< "877577341"
+```
+
+**CAUTION**: Always use `reset()` before each number generation when changing parameters and reusing an object of the same instance, because every parameter is saved to private variables for repeated usage.
+
 
 ## API
 
