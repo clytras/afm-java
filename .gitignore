@@ -9,3 +9,6 @@ nbdist/
 
 # Maven
 target/
+
+# Mainfest
+*.MF
