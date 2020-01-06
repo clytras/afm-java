@@ -117,6 +117,10 @@ git clone https://github.com/clytras/afm-java.git && cd afm-java
 ant -f Src/LytraxAFM test
 ```
 
+Run Demo:
+
+Open `LytraxAFMDemo` along with `LytraxAFM` Netbeans projects, add project package dependency jar of `LytraxAFM` to `LytraxAFMDemo` and run.
+
 ## Changelog
 
 See [CHANGELOG](https://github.com/clytras/afm-java/blob/master/CHANGELOG.md)
