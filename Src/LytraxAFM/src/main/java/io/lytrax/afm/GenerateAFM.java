@@ -89,7 +89,7 @@ public class GenerateAFM {
         }
         
         int validator = sum % 11;
-        int d9Valid = validator >= 10 ? 0 : validator;
+        int d9Valid = validator % 10;
         int d9 = _valid ? d9Valid : random.next(0, 9, d9Valid);
    
         return body + String.valueOf(d9);

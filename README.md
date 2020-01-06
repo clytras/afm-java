@@ -1,7 +1,6 @@
 # Greek TIN/AFM Validator and Generator
 
-[![Linux Build Status](https://img.shields.io/travis/clytras/afm-java.svg?style=flat)](https://travis-ci.org/clytras/afm-java.svg?branch=master) [![Maven Central](https://img.shields.io/maven-central/v/io.lytrax/lytrax-afm)](https://search.maven.org/artifact/io.lytrax/lytrax-afm)
-
+[![Linux Build Status](https://img.shields.io/travis/clytras/afm-java.svg?style=flat)](https://travis-ci.org/clytras/afm-java?branch=master) [![Maven Central](https://img.shields.io/maven-central/v/io.lytrax/lytrax-afm)](https://search.maven.org/artifact/io.lytrax/lytrax-afm)
 
 
 ![Logo](https://github.com/clytras/afm-java/raw/master/resources/LytraxAFM_logo.png)
@@ -14,7 +13,7 @@ https://lytrax.io/blog/projects/greek-tin-validator-generator
 
 ## Installation
 
-Using Gradle (`build.gradle`):
+Get [Maven](https://search.maven.org/artifact/io.lytrax/lytrax-afm) artifacts using Gradle (`build.gradle`):
 
 ```gradle
 repositories {
